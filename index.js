@@ -3,6 +3,7 @@ import "dotenv/config";
 import cors from "cors";
 import { conectarDB } from "./database/connection.js";
 import { getBarritas } from "./controllers/getBarritas.js";
+import { getBarritaById } from "./controllers/getBarritaById.js";
 import { mostrarDataRequest } from "./middlewares/mostrarDataRequest.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
 
@@ -20,6 +21,7 @@ app.get("/", (req, res) => {res.send("API Just Fit")})
 
 //endpoints:
 app.get("/barritas", getBarritas)
+app.get("/barrita/:id", getBarritaById)
 
 // middleware manejador de errores
 app.use(errorHandler)
