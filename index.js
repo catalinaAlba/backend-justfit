@@ -28,6 +28,10 @@ app.use(mostrarDataRequest)
 // llamada a la api
 app.get("/", (req, res) => { res.send("API Just Fit") })
 
+//endpoints barritas:
+app.get("/barritas", getBarritas)
+app.get("/barrita/:id", getBarritaById)
+
 //endpoints login:
 app.post("/registrar", postUsuario)
 app.post("/login", loginUsuario)
@@ -35,10 +39,6 @@ app.post("/login", loginUsuario)
 // middleware control de sesion valida
 app.use(controlarSesion)
 app.post("/logout", logoutUsuario)
-
-//endpoints barritas:
-app.get("/barritas", getBarritas)
-app.get("/barrita/:id", getBarritaById)
 
 // middleware manejador de errores
 app.use(errorHandler)
