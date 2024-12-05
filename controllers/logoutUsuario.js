@@ -9,9 +9,9 @@ export const logoutUsuario = async (req, res, next) => {
     if (usuario) {
         usuario.session = null;
         await usuario.save();
-        res.json({message: "sesion cerrada con exito"})
+        res.json({ message: "sesion cerrada con exito" })
     }
-    else{
+    else {
         next(new Error("no se encontro el usuario"))
     }
 }

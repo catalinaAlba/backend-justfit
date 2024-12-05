@@ -15,6 +15,8 @@ import { loginUsuario } from "./controllers/loginUsuario.js";
 import { controlarSesion } from "./middlewares/controlarSession.js";
 import { logoutUsuario } from "./controllers/logoutUsuario.js";
 
+//Pedidos
+import { postPedido } from "./controllers/postPedido.js";
 
 const app = express();
 const port = 3000;
@@ -35,6 +37,9 @@ app.get("/barrita/:id", getBarritaById)
 //endpoints login:
 app.post("/registrar", postUsuario)
 app.post("/login", loginUsuario)
+
+//endpoints pedidos:
+app.post("/pedido", postPedido)
 
 // middleware control de sesion valida
 app.use(controlarSesion)
