@@ -4,7 +4,7 @@ const schemaPedido = new Schema({
   id: { type: Number, unique: true },
   nombre: String,
   apellido: String,
-  email: { type: String, unique: true },
+  email: String,
   direccion: String,
   envio: Boolean,
   retiro: Boolean,

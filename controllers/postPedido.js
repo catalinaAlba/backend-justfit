@@ -2,14 +2,14 @@ import { ModeloPedido } from "../database/models/modeloPedido.js";
 import { obtenerProximoId } from "../helpers/functions.js";
 
 export const postPedido = async (req, res, next) => {
-    const { nombre, apellido, email, direccion, envio, retiro, tarjeta } = req.body;
+    const { nombre, apellido, direccion, envio, retiro, tarjeta } = req.body;
 
     try {
         const nuevoPedido = new ModeloPedido();
         nuevoPedido.id = await obtenerProximoId(ModeloPedido)
         nuevoPedido.nombre = nombre;
         nuevoPedido.apellido = apellido;
-        nuevoPedido.email = email;
+        nuevoPedido.email = req.usuario.email;
         nuevoPedido.direccion = direccion;
         nuevoPedido.envio = envio;
         nuevoPedido.retiro = retiro;
@@ -18,7 +18,7 @@ export const postPedido = async (req, res, next) => {
         nuevoPedido
             .save()
             .then(() => {
-                res.json({ message: `Pedido con el id ${nuevoUsuario.id} realizado con éxito` });
+                res.json({ message: `Pedido con el id ${nuevoPedido.id} realizado con éxito` });
             })
             .catch((error) => {
                 next(error)
