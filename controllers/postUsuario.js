@@ -6,8 +6,6 @@ export const postUsuario = async (req, res, next) => {
     const { nombre, apellido, email, password } = req.body;
 
     try {
-        // verificamos si existe usuario con email
-        // el await sustituye al .then, preguntar
         const usuarioExistente = await ModeloUsuario.findOne({ email: email })
         if (usuarioExistente) {
             throw new Error("El email ya esta en uso");
