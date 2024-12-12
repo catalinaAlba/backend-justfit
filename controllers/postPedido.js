@@ -2,7 +2,7 @@ import { ModeloPedido } from "../database/models/modeloPedido.js";
 import { obtenerProximoId } from "../helpers/functions.js";
 
 export const postPedido = async (req, res, next) => {
-    const { nombre, apellido, direccion, envio, retiro, tarjeta } = req.body;
+    const { nombre, apellido, direccion, tarjeta } = req.body;
 
     try {
         const nuevoPedido = new ModeloPedido();
@@ -11,8 +11,6 @@ export const postPedido = async (req, res, next) => {
         nuevoPedido.apellido = apellido;
         nuevoPedido.email = req.usuario.email;
         nuevoPedido.direccion = direccion;
-        nuevoPedido.envio = envio;
-        nuevoPedido.retiro = retiro;
         nuevoPedido.tarjeta = tarjeta;
 
         nuevoPedido

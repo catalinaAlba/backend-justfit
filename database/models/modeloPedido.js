@@ -6,8 +6,6 @@ const schemaPedido = new Schema({
   apellido: String,
   email: String,
   direccion: String,
-  envio: Boolean,
-  retiro: Boolean,
   tarjeta: Number,
 });
 
