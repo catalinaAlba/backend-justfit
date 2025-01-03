@@ -2,7 +2,7 @@ import { ModeloPedido } from "../database/models/modeloPedido.js";
 import { obtenerProximoId } from "../helpers/functions.js";
 
 export const postPedido = async (req, res, next) => {
-    const { nombre, apellido, direccion, tarjeta } = req.body;
+    const { nombre, apellido, direccion, tarjeta, barritas } = req.body;
 
     try {
         const nuevoPedido = new ModeloPedido();
@@ -12,6 +12,7 @@ export const postPedido = async (req, res, next) => {
         nuevoPedido.email = req.usuario.email;
         nuevoPedido.direccion = direccion;
         nuevoPedido.tarjeta = tarjeta;
+        nuevoPedido.barritas = barritas;
 
         nuevoPedido
             .save()
@@ -30,6 +31,5 @@ export const postPedido = async (req, res, next) => {
 // obtener el day.now
 // que productos
 // usuario por el token
-// poner validacion en carrito, y redireccione a login
 // y campos en el formulario (campos simbolicos lo que vea que funcione con mi pagina): direccion, tarjeta fake (campo random).
 // envio o retiro
