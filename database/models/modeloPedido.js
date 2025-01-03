@@ -7,6 +7,7 @@ const schemaPedido = new Schema({
   email: String,
   direccion: String,
   tarjeta: Number,
+  barritas: [{ type: Schema.Types.ObjectId, ref: "Barrita" }]
 });
 
 export const ModeloPedido = model("Pedido", schemaPedido);
