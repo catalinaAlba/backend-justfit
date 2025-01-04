@@ -9,7 +9,7 @@ export const postPedido = async (req, res, next) => {
         nuevoPedido.id = await obtenerProximoId(ModeloPedido)
         nuevoPedido.nombre = nombre;
         nuevoPedido.apellido = apellido;
-        nuevoPedido.email = req.usuario.email;
+        //nuevoPedido.email = req.usuario.email;
         nuevoPedido.direccion = direccion;
         nuevoPedido.tarjeta = tarjeta;
         nuevoPedido.barritas = barritas;
