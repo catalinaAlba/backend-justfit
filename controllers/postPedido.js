@@ -1,4 +1,4 @@
-import { ModeloPedido } from "../database/models/modeloPedido.js";
+import { ModeloPedido } from "../database/models/ModeloPedido.js";
 import { obtenerProximoId } from "../helpers/functions.js";
 
 export const postPedido = async (req, res, next) => {
@@ -9,10 +9,15 @@ export const postPedido = async (req, res, next) => {
         nuevoPedido.id = await obtenerProximoId(ModeloPedido)
         nuevoPedido.nombre = nombre;
         nuevoPedido.apellido = apellido;
-        //nuevoPedido.email = req.usuario.email;
+        nuevoPedido.email = req.usuario.email;
+
+        const now = new Date();
+        nuevoPedido.fecha = now.toISOString().slice(0, 19).replace("T", " ");
+
         nuevoPedido.direccion = direccion;
         nuevoPedido.tarjeta = tarjeta;
         nuevoPedido.barritas = barritas;
+
 
         nuevoPedido
             .save()
@@ -25,11 +30,3 @@ export const postPedido = async (req, res, next) => {
     }
     catch (error) { next(error) }
 }
-
-
-
-// obtener el day.now
-// que productos
-// usuario por el token
-// y campos en el formulario (campos simbolicos lo que vea que funcione con mi pagina): direccion, tarjeta fake (campo random).
-// envio o retiro
