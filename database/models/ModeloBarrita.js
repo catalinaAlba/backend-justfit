@@ -6,7 +6,7 @@ const schemaBarrita = new Schema({
     tipo: String,
     precio: Number,
     imagen: String,
-    descripción: String
+    descripcion: String
 })
 
 export const ModeloBarrita = model("Barrita", schemaBarrita)
