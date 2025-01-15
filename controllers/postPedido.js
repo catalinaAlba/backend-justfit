@@ -1,4 +1,4 @@
-import { ModeloPedido } from "../database/models/ModeloPedido.js";
+import { ModeloPedido } from "../database/models/modeloPedido.js";
 import { obtenerProximoId } from "../helpers/functions.js";
 
 export const postPedido = async (req, res, next) => {
